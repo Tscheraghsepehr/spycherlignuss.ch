@@ -1,1 +1,331 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Seite bewusst NICHT von Suchmaschinen indexieren (diskret halten) -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>Spycherli Gnúss – Ueberstorf</title>
+  <meta name="description" content="">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #f7f2e8;        /* warmes Papier */
+      --paper: #fffdf8;
+      --ink: #3b352c;          /* Text */
+      --muted: #7c7363;        /* gedämpft */
+      --sage: #6f7f5e;         /* Gartengrün */
+      --sage-soft: #e6ebdd;
+      --wheat: #c9a44c;        /* gedämpftes Weizengold */
+      --wheat-soft: #f0e7cf;
+      --crust: #7a5230;        /* Brotbraun */
+      --border: #e7ddca;
+      --shadow: 0 14px 40px rgba(90, 70, 40, 0.08);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.8;
+      font-weight: 400;
+      overflow-x: hidden;
+    }
+    h1, h2, h3 { font-family: "Cormorant Garamond", Georgia, serif; line-height: 1.15; font-weight: 600; }
+    a { color: var(--crust); }
+
+    /* ---------- Header ---------- */
+    header {
+      position: sticky; top: 0; z-index: 30;
+      background: rgba(247, 242, 232, 0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.6rem 1.5rem;
+    }
+    .brand { display: flex; align-items: center; gap: 0.6rem; }
+    .brand img { height: 42px; width: auto; }
+    .brand span { font-family: "Cormorant Garamond", serif; font-weight: 700; font-size: 1.4rem; color: var(--crust); letter-spacing: 0.3px; }
+    nav ul { display: flex; gap: 1.8rem; list-style: none; }
+    nav a { text-decoration: none; color: var(--ink); font-size: 0.92rem; letter-spacing: 0.3px; transition: color .2s; }
+    nav a:hover { color: var(--sage); }
+    @media (max-width: 680px) { nav ul { display: none; } }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative; text-align: center;
+      padding: 5.5rem 1.5rem 5rem;
+      background:
+        radial-gradient(900px 360px at 50% -5%, rgba(201,164,76,0.10), transparent 70%),
+        linear-gradient(180deg, #faf6ec 0%, var(--cream) 100%);
+    }
+    .hero .logo-big { width: 150px; max-width: 52vw; margin: 0 auto 1.4rem; display: block; }
+    .hero h1 { font-size: clamp(2.6rem, 7vw, 4.4rem); color: var(--crust); margin-bottom: 0.6rem; letter-spacing: 0.5px; }
+    .hero .tagline { font-family: "Cormorant Garamond", serif; font-style: italic; font-size: clamp(1.2rem, 3vw, 1.6rem); color: var(--sage); margin-bottom: 0.8rem; }
+    .hero p { font-size: 1.08rem; color: var(--muted); max-width: 540px; margin: 0 auto 2.2rem; }
+    .btn {
+      display: inline-block;
+      background: transparent; color: var(--crust);
+      padding: 0.75rem 2rem; border: 1.5px solid var(--crust); border-radius: 2px;
+      text-decoration: none; font-weight: 600; font-size: 0.9rem;
+      letter-spacing: 1px; text-transform: uppercase;
+      transition: background .25s, color .25s;
+    }
+    .btn:hover { background: var(--crust); color: var(--paper); }
+    .btn.solid { background: var(--sage); border-color: var(--sage); color: #fff; }
+    .btn.solid:hover { background: #5d6d4e; }
+
+    /* ---------- Sections ---------- */
+    section { max-width: 1100px; margin: 0 auto; padding: 5rem 1.5rem; }
+    .section-head { text-align: center; margin-bottom: 3rem; }
+    .section-head .accent { width: 30px; height: 30px; opacity: 0.85; margin: 0 auto 0.6rem; display: block; }
+    .section-head .eyebrow { display:block; color: var(--sage); font-weight:600; letter-spacing:2.5px; text-transform:uppercase; font-size:0.74rem; margin-bottom:0.3rem; }
+    .section-head h2 { font-size: clamp(2rem, 4.5vw, 2.9rem); color: var(--crust); }
+
+    /* Über mich */
+    .about { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 3.5rem; align-items: center; }
+    .about .portrait {
+      border-radius: 4px; overflow: hidden; box-shadow: var(--shadow);
+      aspect-ratio: 3/4; background: var(--wheat-soft) url('Bilder/spycher.png') center/cover no-repeat;
+    }
+    .about .eyebrow { display:block; color: var(--sage); font-weight:600; letter-spacing:2.5px; text-transform:uppercase; font-size:0.74rem; margin-bottom:0.4rem; }
+    .about h2 { font-size: clamp(1.9rem,4vw,2.6rem); color: var(--crust); margin-bottom: 1.2rem; }
+    .about p { color: var(--muted); margin-bottom: 1.1rem; }
+    .about .sign { font-family: "Cormorant Garamond", serif; font-style: italic; color: var(--crust); font-size: 1.3rem; }
+    @media (max-width: 800px) { .about { grid-template-columns: 1fr; gap: 2rem; } .about .portrait { aspect-ratio: 4/3; max-height: 420px; } }
+
+    /* Karten */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.6rem; }
+    .card {
+      background: var(--paper); border: 1px solid var(--border);
+      border-radius: 4px; padding: 2.4rem 1.9rem; text-align: center;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .card .ico { width: 38px; height: 38px; margin: 0 auto 0.9rem; display:block; opacity: 0.9; }
+    .card h3 { font-size: 1.55rem; color: var(--crust); margin-bottom: 0.5rem; }
+    .card p { color: var(--muted); font-size: 0.98rem; }
+
+    /* Band „Im Spycherli“ */
+    .band { position: relative; overflow: hidden; background: var(--sage-soft); }
+    .band-inner { max-width: 720px; margin: 0 auto; padding: 4.5rem 1.5rem; text-align: center; position: relative; z-index: 1; }
+    .band .eyebrow { display:block; color: var(--sage); font-weight:600; letter-spacing:2.5px; text-transform:uppercase; font-size:0.74rem; margin-bottom:0.4rem; }
+    .band h2 { color: var(--crust); font-size: clamp(1.9rem,4vw,2.6rem); margin-bottom: 0.9rem; }
+    .band p { color: var(--muted); font-size: 1.08rem; margin-bottom: 1.6rem; }
+
+    /* Preisliste-Platzhalter */
+    .pricelist { max-width: 640px; margin: 0 auto; background: var(--paper); border: 1px solid var(--border); border-radius: 4px; padding: 2.5rem; text-align: center; }
+    .pricelist .soon { font-family:"Cormorant Garamond",serif; font-style: italic; font-size: 1.4rem; color: var(--sage); }
+    .pricelist small { color: var(--muted); }
+
+    /* Galerie */
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.4rem; }
+    .gallery figure { position: relative; border-radius: 4px; overflow: hidden; box-shadow: var(--shadow); margin: 0; }
+    .gallery img { width: 100%; height: 340px; object-fit: cover; display: block; transition: transform .5s ease; }
+    .gallery figure:hover img { transform: scale(1.04); }
+    .gallery figcaption {
+      position: absolute; left: 0; bottom: 0; right: 0;
+      background: linear-gradient(transparent, rgba(59,53,44,0.7));
+      color: #fff; padding: 1.4rem 1.1rem 1rem; font-family:"Cormorant Garamond",serif; font-size: 1.2rem;
+    }
+
+    /* Kontakt */
+    .contact { text-align: center; }
+    .contact-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.4rem; margin-top: 2.8rem;
+    }
+    .contact-grid div { background: var(--paper); border: 1px solid var(--border); border-radius: 4px; padding: 1.9rem; }
+    .contact-grid .ico { width: 30px; height: 30px; margin: 0 auto 0.5rem; display:block; opacity: 0.85; }
+    .contact-grid strong { display: block; margin-bottom: 0.2rem; color: var(--crust); font-family:"Cormorant Garamond",serif; font-size: 1.2rem; }
+    .contact-grid a { color: var(--sage); text-decoration: none; font-weight: 600; }
+
+    footer {
+      background: var(--crust); color: #f1e6d4;
+      text-align: center; padding: 2.8rem 1.5rem; font-size: 0.9rem;
+    }
+    .footer-swallows { display:flex; justify-content:center; gap:1.4rem; margin-bottom:0.9rem; opacity:0.55; }
+    .footer-swallows svg { width: 26px; color: #f1e6d4; }
+
+    /* dezente Schwalben im Hero */
+    .swallow { position: absolute; color: var(--crust); opacity: 0.22; pointer-events: none; z-index: 0; }
+    .swallow.s1 { top: 16%; left: 14%; width: 46px; animation: fly1 12s ease-in-out infinite; }
+    .swallow.s2 { top: 26%; right: 16%; width: 34px; animation: fly2 15s ease-in-out infinite; }
+    @keyframes fly1 { 0%,100% { transform: translate(0,0) rotate(0); } 50% { transform: translate(14px,-10px) rotate(-3deg); } }
+    @keyframes fly2 { 0%,100% { transform: translate(0,0) rotate(0); } 50% { transform: translate(-16px,8px) rotate(3deg); } }
+    @media (max-width: 640px) { .swallow { display: none; } }
+
+    /* dezente Sonnenblume im Band */
+    .deco-sun { position: absolute; pointer-events: none; opacity: 0.12; z-index: 0; }
+    .deco-sun.d1 { width: 160px; bottom: -45px; left: -45px; transform: rotate(-12deg); }
+    .deco-sun.d2 { width: 120px; top: -35px; right: -30px; transform: rotate(15deg); }
+    @media (max-width: 640px) { .deco-sun.d2 { display:none; } }
+
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.show { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="brand">
+        <img src="Bilder/logo.png" alt="Spycherli Gnúss" onerror="this.onerror=null;this.src='Bilder/sonnenblume.svg';">
+        <span>Spycherli Gnúss</span>
+      </div>
+      <ul>
+        <li><a href="#ueber">Über mich</a></li>
+        <li><a href="#angebot">Angebot</a></li>
+        <li><a href="#spycherli">Ab Hof</a></li>
+        <li><a href="#galerie">Galerie</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" style="max-width:none;">
+    <svg class="swallow s1" viewBox="0 0 100 60" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M50 30 C40 12 18 6 2 4 C20 14 30 22 38 34 C30 30 18 32 10 38 C24 36 36 38 46 44 C48 40 49 35 50 30 C51 35 52 40 54 44 C64 38 76 36 90 38 C82 32 70 30 62 34 C70 22 80 14 98 4 C82 6 60 12 50 30 Z"/></svg>
+    <svg class="swallow s2" viewBox="0 0 100 60" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M50 30 C40 12 18 6 2 4 C20 14 30 22 38 34 C30 30 18 32 10 38 C24 36 36 38 46 44 C48 40 49 35 50 30 C51 35 52 40 54 44 C64 38 76 36 90 38 C82 32 70 30 62 34 C70 22 80 14 98 4 C82 6 60 12 50 30 Z"/></svg>
+    <img class="logo-big" src="Bilder/logo.png" alt="Spycherli Gnúss" onerror="this.onerror=null;this.src='Bilder/sonnenblume.svg';">
+    <h1>Spycherli Gnúss</h1>
+    <p class="tagline">Aus Ofen und Garten – vom Hof in Ueberstorf</p>
+    <p>Hausgemachtes Holzofenbrot und Gartenfrisches, mit Sorgfalt von Hand gemacht.</p>
+    <a class="btn solid" href="#kontakt">Kontakt</a>
+  </section>
+
+  <!-- ÜBER MICH -->
+  <section id="ueber" class="reveal">
+    <div class="about">
+      <div class="portrait" aria-label="Spycher in Ueberstorf"></div>
+      <div>
+        <span class="eyebrow">Über mich</span>
+        <h2>Grüezi, ich bin Tamara Brülhart</h2>
+        <p>
+          Auf unserem Bauernhof in Ueberstorf lebe ich zwischen Backofen und Garten.
+          Ich backe leidenschaftlich gern – viel und mit Hingabe – und gebe weiter, was
+          mir Freude macht: ehrliches Brot aus dem Holzofen und Feines aus dem eigenen Garten.
+        </p>
+        <p>
+          [Hier folgt die persönliche Beschreibung des Betriebs – ein, zwei Sätze über
+          den Hof, das Backen und den Garten.]
+        </p>
+        <p>
+          Vieles davon gebe ich gerne direkt ab Hof weiter – persönlich, saisonal und
+          auf Anfrage.
+        </p>
+        <p class="sign">— Tamara</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANGEBOT -->
+  <section id="angebot" class="reveal">
+    <div class="section-head">
+      <img class="accent" src="Bilder/sonnenblume.svg" alt="">
+      <span class="eyebrow">Hausgemacht</span>
+      <h2>Aus Ofen und Garten</h2>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#7a5230" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14c0-4 3-7 8-7s8 3 8 7-3 4-8 4-8 0-8-4Z"/><path d="M8 11v3M12 10v4M16 11v3"/></svg>
+        <h3>Holzofenbrot</h3>
+        <p>Mein Spycherlibrot, langsam gebacken über echtem Holzfeuer – knusprig und aromatisch.</p>
+      </div>
+      <div class="card">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#6f7f5e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-5-2-8-6-8-11 4 0 8 3 8 8"/><path d="M12 21c5-2 8-6 8-11-4 0-8 3-8 8"/><path d="M12 21v-7"/></svg>
+        <h3>Gartenfrisches</h3>
+        <p>Was im Garten wächst, findet seinen Weg auf den Tisch – saisonal und mit Sorgfalt.</p>
+      </div>
+      <div class="card">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#c9a44c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10 12 4l8 6"/><path d="M6 9v10h12V9"/><path d="M10 19v-5h4v5"/></svg>
+        <h3>Direkt ab Hof</h3>
+        <p>Erhältlich direkt bei uns auf dem Hof – gerne persönlich auf Anfrage.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BAND: IM SPYCHERLI -->
+  <div id="spycherli" class="band reveal">
+    <img class="deco-sun d1" src="Bilder/sonnenblume.svg" alt="">
+    <img class="deco-sun d2" src="Bilder/sonnenblume.svg" alt="">
+    <div class="band-inner">
+      <span class="eyebrow">Direkt ab Hof</span>
+      <h2>Hausgemachtes vom Hof</h2>
+      <p>
+        Frisches Brot und Feines aus Ofen und Garten gibt es direkt bei uns auf dem Hof –
+        am besten einfach persönlich melden.
+      </p>
+      <a class="btn" href="#kontakt">Kontakt aufnehmen</a>
+    </div>
+  </div>
+
+  <!-- GALERIE -->
+  <section id="galerie" class="reveal">
+    <div class="section-head">
+      <span class="eyebrow">Impressionen</span>
+      <h2>Vom Hof</h2>
+    </div>
+    <div class="gallery">
+      <figure>
+        <img src="Bilder/spycher.png" alt="Spycher – traditionelles Holzhaus">
+        <figcaption>Unser Spycher</figcaption>
+      </figure>
+      <figure>
+        <img src="Bilder/fluss.png" alt="Natur rund um Ueberstorf">
+        <figcaption>Rund um Ueberstorf</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section id="kontakt" class="contact reveal">
+    <div class="section-head">
+      <span class="eyebrow">Kontakt</span>
+      <h2>Kontakt</h2>
+    </div>
+    <p style="color:var(--muted);max-width:540px;margin:0 auto;">Ich freue mich auf Ihre Nachricht.</p>
+    <div class="contact-grid">
+      <div>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#7a5230" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        <strong>Standort</strong>
+        Ueberstorf
+      </div>
+      <div>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#7a5230" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        <strong>E-Mail</strong>
+        <a href="mailto:info@spycherlignuss.ch">info@spycherlignuss.ch</a>
+      </div>
+      <div>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#7a5230" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg>
+        <strong>Bezahlung</strong>
+        Bar oder per IBAN
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-swallows">
+      <svg viewBox="0 0 100 60" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M50 30 C40 12 18 6 2 4 C20 14 30 22 38 34 C30 30 18 32 10 38 C24 36 36 38 46 44 C48 40 49 35 50 30 C51 35 52 40 54 44 C64 38 76 36 90 38 C82 32 70 30 62 34 C70 22 80 14 98 4 C82 6 60 12 50 30 Z"/></svg>
+      <svg viewBox="0 0 100 60" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M50 30 C40 12 18 6 2 4 C20 14 30 22 38 34 C30 30 18 32 10 38 C24 36 36 38 46 44 C48 40 49 35 50 30 C51 35 52 40 54 44 C64 38 76 36 90 38 C82 32 70 30 62 34 C70 22 80 14 98 4 C82 6 60 12 50 30 Z"/></svg>
+    </div>
+    &copy; 2026 Spycherli Gnúss · Tamara Brülhart · Ueberstorf · spycherlignuss.ch
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+
+</body>
+</html>
